@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Site settings
 title: Your awesome title
 email: your-email@domain.com
@@ -12,3 +13,7 @@ github_username:  jekyll
 
 # Build settings
 markdown: kramdown
+=======
+markdown: rdiscount
+pygments: true
+>>>>>>> 9d437f8638039da32f5cd8714969759f020a9a9b
