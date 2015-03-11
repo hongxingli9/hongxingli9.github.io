@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>一米天动画</title>
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	<style>
+	<!--	
+	#loadingmask {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgb(0,0,0);
+		z-index: 1000;
+	}
+	#persentage {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		font-size: 30px;
+		-webkit-transform: translate3d(-50%, -60%, 0);
+		color: rgb(255,255,255);		
+	}
+	-->
+	</style>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body id="main">
+	<div id="loadingmask">
+		<p id="persentage">Loading... 0%</p>
+	</div>
+	<div id="outside">
+		<div id="door" data-original="images/door.png" class="door lazy"></div>
+		<div id="wall" data-original="images/wall.png" class="wall lazy"></div>
+		<div id="tip_enter" class="tip"></div>	
+		<div id="tip_hand" data-original="images/touch.png" class="lazy"></div>		
+	</div>
+	<div id="stage">
+		<div id="background" data-original="images/bg.jpg" class="background lazy"></div>		
+		<div id="about" data-original="images/about.jpg" class="about lazy"></div>
+		<div id="about_copy"></div>
+		<div id="character" data-original="images/character.png" class="character lazy"></div>
+		<div id="works" data-original="images/works2.png" class="works lazy"></div>
+		<div id="works_copy">
+			<video id="vedio" src="media/showreel2.mp4" preload="auto" width="480" height="270" controls="controls" type="video/mp4" poster="images/poster.jpg"></video>
+		</div>
+		<div id="contact" data-original="images/contact.png" class="contact lazy"></div>
+		<div id="contact_copy" class="contact_copy"></div>
+		<div id="contact_final" class="contact_final"></div>		
+		<div id="man" class="man">
+			<div id="left-hand" data-original="images/hand.png" class="hand left-hand lazy"></div>
+			<div id="right-hand" class="hand right-hand"></div>
+			<div id="right-hand-copy" class="right-hand right-hand-copy"></div>
+			<div id="foot" data-original="images/foot.png" class="foot lazy"></div>
+			<div id="person" data-original="images/person.png" class="person lazy"></div>
+		</div>	
+		<div id="stage_close" class="stage_close">
+			<div id="rectangle_up" class="rectangle"></div>
+			<div id="rectangle_down" class="rectangle"></div>
+		</div>		
+		<div id="tip_about" class="tip"></div>
+		<div id="tip_works" class="tip"></div>
+		<div id="tip_contact" class="tip"></div>	
+	</div>
+	
+	<script src="zepto.min.1.1.6.js"></script>
+	<script>
+	var $background = $("#background"),
+		$rightHand = $("#right-hand"),
+		$rightHandCopy = $("#right-hand-copy"),
+		$aboutPost = $("#about"),
+		$aboutCopy = $("#about_copy"),
+		$works = $("#works"),
+		$contact = $("#contact"),
+		$contactCopy = $("#contact_copy"),
+		$man = $("#man"),
+		$closeButton = $("#stage_close"),
+		$person = $("#person"),
+		$contactFinal = $("#contact_final"),
+		$tip_enter = $("#tip_enter");
+
+	hideTips();
+
+	$(function() {
+		var total = 0,
+			counter = 0,
+			loadingmask = $("#loadingmask"),
+			persentage = $("#persentage");
+		    lazyImgs = $(".lazy");
+		$tip_enter.hide();
+		total = lazyImgs.length;
+		lazyImgs.lazyload({
+			load : function() {
+				counter++;				
+				persentage.text("Loading... " + Math.ceil(counter * 100 / total) + "%");
+				if(counter == total) {
+					persentage.hide();
+					loadingmask.animate({
+						opacity: 0,
+					}, 600, "ease-out");
+					setTimeout(function() {
+						loadingmask.hide()
+						$tip_enter.show();
+					}, 600);
+				}				
+			}
+		})
+	});
+
+	$("#tip_enter").tap(function() {
+		showStage();
+	});
+
+	$("#tip_hand").tap(function() {
+		showStage();
+	});
+
+	$("#tip_about").tap(function() {
+		showAboutPost();		
+	})
+
+	$("#tip_contact").tap(function() {
+		showContact();
+	});
+
+	$("#tip_works").tap(function() {
+		showWorksVideo();
+	});
+
+	$closeButton.tap(function() {
+		switch($closeButton.current) {
+			case "contact": 
+				hideContact();
+				break;
+			case  "aboutPost":
+				hideAboutPost();
+				break;
+			case "workVideo":
+				hideWorksVideo();
+				break;
+			default:
+				break;
+		}
+	});
+	
+	function magnifyStage() {
+
+		$("#stage").css({
+			"-webkit-transform" : "scale(1,1)"
+		});
+	}
+
+
+	function showStage() {
+		var outside = $("#outside"),
+			door = $("#door"),
+			wall = $("#wall");
+		door.css({
+			"-webkit-transform" : "rotateY(90deg)"
+		});
+		$tip_enter.hide();
+		$("#tip_hand").hide();
+		setTimeout(function() {
+			door.css({
+				"display" : "none"
+			})
+		}, 400);
+		setTimeout(function() {
+			wall.css({
+				"-webkit-transform" : "scale(2.8, 2.8)"
+			})
+		}, 400);
+		
+		setTimeout(function() {
+			magnifyStage();
+		}, 400);		
+		
+		setTimeout(function() {
+			outside.css({
+				"display" : "none"
+			})
+		}, 800);
+		setTimeout(function() {
+			showTips();
+		}, 900);
+	}
+ 
+	function hideTips() {
+		$("#stage .tip").each(function(index, item) {
+			$(item).css({
+				 "display" : "none"
+			});						
+		});
+	}
+
+	function showTips() {
+		$("#stage .tip").each(function(index, item) {
+			$(item).css({
+				"display" : "block"
+			});					
+		});
+	}
+
+	function showCloseButton() {
+		$closeButton.css({
+			"-webkit-transform" : "scale(1,1) rotate(180deg)"
+		});
+	}
+
+	function hideCloseButton() {
+		$closeButton.css({
+			"-webkit-transform" : "scale(0,0) rotate(0deg)"
+		});
+	}
+
+	function showContact() {
+		var timeout_contact = null,
+			timeout_hand = null,
+			timeout_hidden = null,
+			timeout_show = null;
+
+		$closeButton.current = "contact";
+
+		hideTips();
+
+		$rightHand.css({
+			"visibility" : "hidden"
+		});
+
+		$rightHandCopy.css({
+			"visibility" : "visible",
+			"-webkit-transform" : "translate3d(60%, -20%, 0) rotate(72deg)"
+		});
+
+		setTimeout(function() {
+			showCloseButton();
+		}, 400);
+		
+		$person.css({
+			"-webkit-transform" : "skewX(-3deg)"
+		});
+
+		setTimeout(function() {
+			$person.css({
+				"-webkit-transform" : "skewX(2deg)"
+			});
+		}, 200);
+
+		setTimeout(function() {
+			$person.css({
+				"-webkit-transform" : "skewX(0deg)"
+			});
+		}, 500);
+
+		timeout_contact = setTimeout(function() {
+			$contact.css({
+				"-webkit-transform" : "skewX(40deg)  translate3d(120%, -240%, 0)"
+			});
+		}, 200);
+
+		timeout_hand = setTimeout(function(){
+			$rightHandCopy.css({
+				"-webkit-transform" : "translate3d(90%, -40%, 0) rotate(20deg)"
+			});
+		}, 200);
+
+		timeout_hidden = setTimeout(function(){
+			$contact.css({
+				"visibility" : "hidden"
+ 			});
+		}, 180);
+
+ 		timeout_show = setTimeout(function(){
+ 			$contactCopy.css({
+		 		"visibility" : "visible",
+				"left" : "50%",
+				"top" : "50%",	
+				"-webkit-transform" : "translate3d(-50%, -50%, 0) rotate(360deg) scale(1, 1)"
+ 			});
+ 		}, 350);
+
+ 		setTimeout(function() {
+ 			$contactFinal.css({
+ 				"visibility" : "visible"
+ 			})
+ 		}, 800);
+	}
+
+	function hideContact() {
+		$closeButton.current = "";
+
+		$contactFinal.css({
+			"visibility" : "hidden"
+		});
+	
+
+		$contactCopy.css({
+			"visibility" : "hidden",
+			"left" : "18%",
+			"top" : "18%",	
+			"-webkit-transform" : "translate3d(0, 0, 0) rotate(0deg) scale(0.06, 0.06)"
+		});
+		
+		setTimeout(function() {
+			hideCloseButton();
+		}, 100);
+
+		setTimeout(function() {
+			$person.css({
+				"-webkit-transform" : "skewX(2deg)"
+			})
+		}, 150);
+
+		setTimeout(function() {
+			$person.css({
+				"-webkit-transform" : "skewX(-3deg)"
+			})
+		}, 450);
+
+		setTimeout(function() {
+			$person.css({
+				"-webkit-transform" : "skewX(0deg)"
+			})
+		}, 750);
+
+		setTimeout(function(){
+			$contact.css({
+				"visibility" : "visible"
+ 			})
+		}, 450);
+
+		setTimeout(function() {
+			$rightHandCopy.css({
+				"-webkit-transform" : "translate3d(60%, -20%, 0) rotate(72deg)"
+			});
+		}, 450);
+
+		setTimeout(function() {
+			$contact.css({
+				"-webkit-transform" : "skewX(40deg)"
+			});
+		}, 450);
+
+		setTimeout(function() {
+			$rightHandCopy.css({
+				"visibility" : "hidden",
+				"-webkit-transform" : "none"
+			});
+		}, 650);
+
+		setTimeout(function() {
+			$rightHand.css({
+				"visibility" : "visible"
+			});
+			showTips();			
+		}, 850);
+	}
+
+	function showAboutPost() {
+		hideTips();
+
+		$closeButton.current = "aboutPost";
+
+		$aboutPost.css({
+			"-webkit-transform" : "translate3d(-36%, -52%, 0) rotate(-20deg) scale(0.22, 0.2)"
+		});
+		
+		setTimeout(function() {
+			showCloseButton();
+		}, 200);
+
+		setTimeout(function() {
+			$aboutPost.css({
+				"-webkit-transform" : "translate3d(-50%, -42%, 0) rotate(0deg) scale(1,1)",
+				"z-index" : "100"
+			});
+		}, 300);
+
+		setTimeout(function() {
+			$aboutCopy.css({
+				"display" : "block"
+			});
+		}, 700);		
+	}
+
+	function hideAboutPost() {
+		$closeButton.current = "";
+
+		$aboutCopy.css({
+			"display" : "none"
+		});
+
+		$aboutPost.css({
+			"-webkit-transform" : "translate3d(-36%, -52%, 0) rotate(-20deg) scale(0.22, 0.2)"
+		});
+
+		setTimeout(function() {
+			hideCloseButton();
+		}, 100);
+
+		setTimeout(function() {
+			$aboutPost.css({
+				"-webkit-transform" : "translate3d(-30%, -43.6%, 0) scale(0.22, 0.2) rotate(0deg)",
+				"z-index" : "0"
+			});
+		}, 380);
+
+		setTimeout(function() {
+			showTips();
+		}, 700);
+	}
+
+	function showWorksVideo() {
+		$closeButton.current = "workVideo";
+
+		hideTips();
+
+		setTimeout(function() {
+			showCloseButton();
+		}, 200);
+
+		$("#man").css({
+			"-webkit-transform" : "translate3d(-70%, -100%, 0)"
+		});
+
+		$("#works").css({
+			"-webkit-transform" : "translate3d(32%, -230%, 0) scale(1.5, 1.5)"
+		})
+
+		setTimeout(function() {
+			$("#works_copy").css({
+				"display" : "block",
+				"z-index" : "100"
+			});
+			$("#video").width($("#works_copy").width()); 
+			$("#video").height($("#works_copy").height());
+		}, 400);
+
+		setTimeout(function() {
+			console.log($("#vedio").width());
+			console.log($("#works_copy").width());
+			$("#vedio").width($("#works_copy").width() * 0.66); 
+			$("#vedio").height($("#works_copy").height() * 0.86);
+		}, 500);
+	}
+
+	function hideWorksVideo() {
+		$closeButton.current = "";
+
+		$("#works_copy").css({
+			"display" : "none",
+			"z-index" : "0"
+		});
+
+		$("#works").css({
+			"-webkit-transform" : "translate3d(32%, -205%, 0) scale(0.98, 0.98)"
+		});
+
+		$("#man").css({
+			"-webkit-transform" : "translate3d(3%, -100%, 0)"
+		})
+
+		setTimeout(function() {
+			hideCloseButton();
+		}, 100);
+
+		setTimeout(function() {
+			showTips();
+		}, 400) ;
+	}
+	</script>
+</body>
+</html>
