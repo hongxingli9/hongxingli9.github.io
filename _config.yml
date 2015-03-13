@@ -3,6 +3,7 @@ title: Hing Lee
 email: homhin@163.com
 description: javascript html5 css cocos2d-js jekyll
 baseurl: "" # the subpath of your site, e.g. /blog/
+permalink: /:title/
 url: "http://hxhing.cn" # the base hostname & protocol for your site
 github_username:  Ahing
 
