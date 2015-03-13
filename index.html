@@ -4,16 +4,16 @@ layout: default
 
 <div class="home">
 
-  <h1 class="page-heading">Posts</h1>
+  <h1 class="page-heading">首页</h1>
 
   <ul class="post-list">
     {% for post in paginator.posts %}
       {% capture y %}{{post.date | date:"%Y"}}{% endcapture %}
       {% if year != y %}
         {% assign year = y %}
-        <li class="listing-seperator">{{ y }}</li>
+        <li class="seperator">{{ y }}</li>
       {% endif %}
-      <li>
+      <li class="item">
         <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>      
       </li>
@@ -53,8 +53,6 @@ layout: default
   {% endif %}
   (共{{ paginator.total_posts }}篇)
 </div>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>
 
