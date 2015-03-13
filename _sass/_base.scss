@@ -74,13 +74,22 @@ li {
     }
 }
 
+/**
+ * .item time & seperator
+ */
+.seperator {
+    font-weight: bold;
+}
 
+ .item time {
+    color: #999;
+ }
 
 /**
  * Headings
  */
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 300;
+    font-weight: bold;
 }
 
 
@@ -93,7 +102,7 @@ a {
     text-decoration: none;
 
     &:visited {
-        color: darken($brand-color, 15%);
+        /*color: darken($brand-color, 15%);*/
     }
 
     &:hover {
