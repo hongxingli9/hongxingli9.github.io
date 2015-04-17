@@ -1,0 +1,26 @@
+{
+"resources":
+	[
+		{"name":"bgImage","type":"image","url":"assets/bg.jpg"},
+		{"name":"egretIcon","type":"image","url":"assets/egret_icon.png"},
+        {"name":"description","type":"json","url":"config/description.json"},
+        {"name":"start_png","type":"image","url":"assets/start.png"},
+        {"name":"end_png","type":"image","url":"assets/end.png"},
+        {"name":"textures","type":"sheet","url":"assets/textures.json"},
+        {"name":"textutes_png","type":"image","url":"assets/textures.png"},
+        {"name":"circle_png","type":"image","url":"assets/particle/circle.png"},
+        {"name":"pentagon_png","type":"image","url":"assets/particle/pentagon.png"},
+        {"name":"rect_png","type":"image","url":"assets/particle/rect.png"},
+        {"name":"triangle_png","type":"image","url":"assets/particle/triangle.png"},
+        {"name":"circle_json","type":"json","url":"assets/particle/circle.json"},
+        {"name":"pentagon_json","type":"json","url":"assets/particle/pentagon.json"},
+        {"name":"rect_json","type":"json","url":"assets/particle/rect.json"},
+        {"name":"triangle_json","type":"json","url":"assets/particle/triangle.json"}
+	],
+
+"groups":
+	[
+        {"name":"preload","keys":"bgImage,egretIcon"},
+        {"name":"jump_bird","keys":"start_png,end_png,textures,textures_png,circle_png,pentagon_png,rect_png,triangle_png,circle_json,pentagon_json,rect_json,triangle_json"}
+	]
+}
