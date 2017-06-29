@@ -122,7 +122,7 @@
 		})
 	});
 
-	if (isPC()) {
+	if (isPC()) { //pc端支持点击事件
 		$("#tip_enter").on("click", function(event) {
 			showStage();
 		});
@@ -157,7 +157,7 @@
 					break;
 			}
 		});
-	} else {
+	} else { //移动端支持触摸事件
 		$("#tip_enter").tap(function() {
 			showStage();
 		});
