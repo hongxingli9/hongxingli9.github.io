@@ -44,7 +44,7 @@
 		<div id="character" data-original="images/character.png" class="character lazy"></div>
 		<div id="works" data-original="images/works2.png" class="works lazy"></div>
 		<div id="works_copy">
-			<video id="vedio" src="media/showreel2.mp4" preload="auto" width="480" height="270" controls="controls" type="video/mp4" poster="images/poster.jpg"></video>
+			<video id="video" src="media/showreel2.mp4" preload="auto" width="480" height="270" controls="controls" type="video/mp4" poster="images/poster.jpg"></video>
 		</div>
 		<div id="contact" data-original="images/contact.png" class="contact lazy"></div>
 		<div id="contact_copy" class="contact_copy"></div>
@@ -79,9 +79,22 @@
 		$closeButton = $("#stage_close"),
 		$person = $("#person"),
 		$contactFinal = $("#contact_final"),
-		$tip_enter = $("#tip_enter");
+		$tip_enter = $("#tip_enter"),
+		$video = $("#video");
 
 	hideTips();
+
+	var isPC = function () {
+	    var userAgentInfo = navigator.userAgent.toLowerCase();
+	    var Agents = new Array("android", "iphone", "symbianOS", "windows phone", "ipad", "ipod");
+	    var flag = true;
+	    for (var v = 0; v < Agents.length; v++) {
+	        if (userAgentInfo.indexOf(Agents[v]) > 0) { 
+	        	flag = false; break; 
+	        }
+	    }
+	    return flag;
+	}
 
 	$(function() {
 		var total = 0,
@@ -109,41 +122,78 @@
 		})
 	});
 
-	$("#tip_enter").tap(function() {
-		showStage();
-	});
+	if (isPC()) {
+		$("#tip_enter").on("click", function(event) {
+			showStage();
+		});
+		$("#tip_hand").on("click", function(event) {
+			showStage();
+		});
 
-	$("#tip_hand").tap(function() {
-		showStage();
-	});
+		$("#tip_about").on("click", function(event) {
+			showAboutPost();		
+		})
 
-	$("#tip_about").tap(function() {
-		showAboutPost();		
-	})
+		$("#tip_contact").on("click", function(event) {
+			showContact();
+		});
 
-	$("#tip_contact").tap(function() {
-		showContact();
-	});
+		$("#tip_works").on("click", function(event) {
+			showWorksVideo();
+		});
 
-	$("#tip_works").tap(function() {
-		showWorksVideo();
-	});
+		$closeButton.on("click", function(event) {
+			switch($closeButton.current) {
+				case "contact": 
+					hideContact();
+					break;
+				case  "aboutPost":
+					hideAboutPost();
+					break;
+				case "workVideo":
+					hideWorksVideo();
+					break;
+				default:
+					break;
+			}
+		});
+	} else {
+		$("#tip_enter").tap(function() {
+			showStage();
+		});
 
-	$closeButton.tap(function() {
-		switch($closeButton.current) {
-			case "contact": 
-				hideContact();
-				break;
-			case  "aboutPost":
-				hideAboutPost();
-				break;
-			case "workVideo":
-				hideWorksVideo();
-				break;
-			default:
-				break;
-		}
-	});
+		$("#tip_hand").tap(function() {
+			showStage();
+		});
+
+		$("#tip_about").tap(function() {
+			showAboutPost();		
+		})
+
+		$("#tip_contact").tap(function() {
+			showContact();
+		});
+
+		$("#tip_works").tap(function() {
+			showWorksVideo();
+		});
+
+		$closeButton.tap(function() {
+			switch($closeButton.current) {
+				case "contact": 
+					hideContact();
+					break;
+				case  "aboutPost":
+					hideAboutPost();
+					break;
+				case "workVideo":
+					hideWorksVideo();
+					break;
+				default:
+					break;
+			}
+		});
+	}
 	
 	function magnifyStage() {
 
@@ -439,11 +489,13 @@
 		}, 400);
 
 		setTimeout(function() {
-			console.log($("#vedio").width());
+			console.log($("#video").width());
 			console.log($("#works_copy").width());
-			$("#vedio").width($("#works_copy").width() * 0.66); 
-			$("#vedio").height($("#works_copy").height() * 0.86);
+			$("#video").width($("#works_copy").width() * 0.66); 
+			$("#video").height($("#works_copy").height() * 0.86);
 		}, 400);
+
+		$video.get(0).play();
 	}
 
 	function hideWorksVideo() {
@@ -469,6 +521,7 @@
 		setTimeout(function() {
 			showTips();
 		}, 400) ;
+		$video.get(0).pause();
 	}
 	</script>
 </body>
