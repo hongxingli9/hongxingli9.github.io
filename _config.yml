@@ -1,13 +1,14 @@
 # Site settings
-title: Hing Lee
+title: Horace Li
 email: homhin@163.com
 description: javascript html5 css cocos2d-js jekyll
 baseurl: "" # the subpath of your site, e.g. /blog/
 permalink: /:title/
-url: "http://hxhing.cn" # the base hostname & protocol for your site
-github_username:  Ahing
+url: "https://github.com/horaceli29" # the base hostname & protocol for your site
+github_username:  Horaceli29
 truncate: 60
 paginate: 100
 
 # Build settings
 markdown: kramdown
+gems: [jekyll-paginate]

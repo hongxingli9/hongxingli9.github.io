@@ -4,13 +4,13 @@ layout: page
 comments: no
 ---
 
-###个人说明
+### 个人说明
 
-* 做了接近2年功能测试，蓦然回首，却是喜爱前端的工作
+* 前端小窝
 
 
-###欢迎交流
+### 欢迎交流
 
 * 邮箱：[{{ site.email }}](mailto:{{ site.email }})
-* GitHub : [http://github.com/{{ site.hub }}](http://github.com/{{ site.hub }})
+* GitHub : [https://github.com/horaceli29](https://github.com/{{ site.github_username }})
 
