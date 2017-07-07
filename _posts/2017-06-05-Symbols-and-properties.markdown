@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Symbols 与 Symbols属性"
+title:  "笔记:Symbols 与 Symbols属性"
 date:   2017-06-05 
 categories: ES6
 ---

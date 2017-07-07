@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "set and map"
+title:  "笔记:set and map"
 date:   2017-06-06 
 categories: ES6
 ---

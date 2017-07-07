@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "迭代器与生成器"
+title:  "笔记:迭代器与生成器"
 date:   2017-06-07 
 categories: ES6
 ---

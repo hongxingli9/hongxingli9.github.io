@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "ES6 类"
+title:  "笔记:ES6 类"
 date:   2017-06-09 
 categories: ES6
 ---

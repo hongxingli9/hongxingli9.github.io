@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "改进的数组功能(未完成)"
+title:  "笔记:改进的数组功能(未完成)"
 date:   2017-06-10 
 categories: ES6
 ---

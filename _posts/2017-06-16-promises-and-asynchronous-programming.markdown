@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Promises 与异步编程"
+title:  "笔记:Promises 与异步编程"
 date:   2017-06-16 
 categories: ES6
 ---
