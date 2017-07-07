@@ -27,3 +27,7 @@ categories: javascript
 9. null == 1
 10. {toString: function() {return 1}, valueOf: function() {return []}} == 1
 
+
+
+来源：http://www.cnblogs.com/rubylouvre/p/3990290.html
+
