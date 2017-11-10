@@ -12,5 +12,5 @@ comments: no
 ### 欢迎交流
 
 * 邮箱：[{{ site.email }}](mailto:{{ site.email }})
-* GitHub : [https://github.com/horaceli29](https://github.com/{{ site.github_username }})
+* GitHub : [https://github.com/hongxingli9](https://github.com/{{ site.github_username }})
 
