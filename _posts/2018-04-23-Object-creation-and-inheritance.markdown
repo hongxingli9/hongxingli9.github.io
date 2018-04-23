@@ -17,11 +17,13 @@ categories: javascript
 
 ## 继承
 1.  原型链
+
  	原型链问题：
  	1） 包含引用类型值的原型属性会被所有实例共享。
 	2） 在创建子类型的实例时，不能向超类的构造函数传递参数。
 
 2. 借用构造函数(伪造对象或经典继承)
+
 	```javascript
 	function SubType() {
 		SuperType.call(this);
@@ -29,9 +31,11 @@ categories: javascript
 	```
 
 3. 组合继承(伪经典继承)
+
     原型链和借用构造函数组合在一起的技术。
 
 4. 原型式继承
+
 	```javascript
     function object(o) {
 		function F() {};
@@ -41,6 +45,7 @@ categories: javascript
 	```
 
 5. 寄生式继承
+
 	```javascript
 	function createAnother(original) {
 		var clone = object(original);
@@ -51,7 +56,9 @@ categories: javascript
 	}
 	```
 6. 寄生组合式继承
+
   	借用构造函数来继承属性，通过原型链的混成形式来继承方法。其背后的思想是：不必为了指定子类型的原型而调用超类型的构造函数，我们所需要的无非是超类型原型的一个副本。
+  	
    ```javascript
    function inheritPrototype(subType, superType) {
 		var prototype = object(superType.prototype);
