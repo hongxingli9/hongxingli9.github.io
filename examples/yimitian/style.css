@@ -4,10 +4,20 @@ body, div {
 }
 
 html, body {
+	position: relative;
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
 	background-color: rgb(0,0,0);
+}
+
+.main {
+	width: 320px;
+	height: 480px;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate3d(-50%, -50%, 0);
+	transform: translate3d(-50%, -50%, 0);
 }
 
 #stage {
@@ -18,7 +28,9 @@ html, body {
 	height: 100%;
 	overflow: hidden;
 	-webkit-transform: scale(0.9, 0.9);
+	transform: scale(0.9, 0.9);
 	-webkit-transition: -webkit-transform .3s;
+	transition: transform .3s;
 }
 
 .background {
@@ -26,6 +38,7 @@ html, body {
 	height: 100%;
 	background: url(images/bg.jpg) 0px 0px/100% 100% no-repeat;
 	-webkit-transition: -webkit-transform .4s;
+	transition: transform .4s;
 }
 
 .character {
@@ -45,8 +58,11 @@ html, body {
 	height: 80%;
 	background: url(images/about.jpg) 0px 0px/100% 100% no-repeat;
 	-webkit-transition: -webkit-transform .4s;
+	transition: transform .4s;
 	-webkit-transform: translate3d(-30%, -43.6%, 0) scale(0.22, 0.2) rotate(0deg);
+	transform: translate3d(-30%, -43.6%, 0) scale(0.22, 0.2) rotate(0deg);
 	-webkit-transform-origin: top left;
+	transform-origin: top left;
 	z-index: 0;
 }
 
@@ -60,6 +76,7 @@ html, body {
 	height: 80%;
 	background: url(images/about.jpg) 0px 0px/100% 100% no-repeat;
 	-webkit-transform : translate3d(-50%, -42%, 0);
+	transform : translate3d(-50%, -42%, 0);
 	z-index: 100;
 }
 
@@ -69,7 +86,9 @@ html, body {
 	height: 28%;
 	background: url(images/works2.png) 0px 0px/100% 100% no-repeat;
 	-webkit-transform: translate3d(32%, -205%, 0) scale(0.98, 0.98);
+	transform: translate3d(32%, -205%, 0) scale(0.98, 0.98);
 	-webkit-transition: -webkit-transform .4s;
+	transition: transform .4s;
 }
 
 #works_copy {
@@ -79,6 +98,7 @@ html, body {
 	height: 28%;
 	background: url(images/works2.png) 0px 0px/100% 100% no-repeat;
 	-webkit-transform: translate3d(32%, -230%, 0) scale(1.5, 1.5);
+	transform: translate3d(32%, -230%, 0) scale(1.5, 1.5);
 }
 
 #video {
@@ -92,11 +112,14 @@ html, body {
 	width: 100%;
 	height: 100%;
 	-webkit-transform: translate3d(3%, -100%, 0);
+	transform: translate3d(3%, -100%, 0);
 	-webkit-transition: -webkit-transform .4s;
+	transition: transform .4s;
 }
 
 .hand {
 	-webkit-animation: typing .25s linear infinite alternate;
+	animation: typing .25s linear infinite alternate;
 }
 
 .left-hand {
@@ -106,7 +129,8 @@ html, body {
 	width: 6%;
 	height: 20%;
 	background: url(images/hand.png) 0px 0px/100% 100% no-repeat;
-	-webkit-transform: rotate(27deg);	
+	-webkit-transform: rotate(27deg);
+	transform: rotate(27deg);	
 }
 
 
@@ -119,19 +143,23 @@ html, body {
 	height: 20%;     
 	background: url(images/hand.png) 0px 0px/100% 100% no-repeat;     
 	-webkit-transform: rotate(27deg);
+	transform: rotate(27deg);
 }
 
 
 
 .right-hand-copy {
 	-webkit-animation: none;
+	animation: none;
 	visibility: hidden;
 	-webkit-transition: all .2s;
+	transition: all .2s;
 }
 
 .active {
 	visibility: visible;
 	-webkit-transform: translate3d(60%, -20%, 0) rotate(72deg);
+	transform: translate3d(60%, -20%, 0) rotate(72deg);
 }
 
 .test {
@@ -140,6 +168,7 @@ html, body {
 
 .move_up {
 	-webkit-transform: translate3d(126%, -40%, 0) rotate(20deg);
+	transform: translate3d(126%, -40%, 0) rotate(20deg);
 }
 
 .foot {
@@ -150,7 +179,9 @@ html, body {
 	height: 16%;
 	background: url(images/foot.png) 0px 0px/100% 100% no-repeat;
 	-webkit-transform: rotate(-30deg);
+	transform: rotate(-30deg);
 	-webkit-animation: shakefeet 0.6s linear infinite alternate;
+	animation: shakefeet 0.6s linear infinite alternate;
 }
 
 .person {
@@ -161,7 +192,9 @@ html, body {
 	height: 46%;
 	background: url(images/person.png) 0px 0px/100% 100% no-repeat;
 	-webkit-transition: -webkit-transform .3s;
+	transition: transform .3s;
 	-webkit-transform-origin: right bottom;
+	transform-origin: right bottom;
 }
 
 /*联系卡*/
@@ -173,12 +206,16 @@ html, body {
 	height: 4.2%;
 	background: url(images/contact.png) 0px 0px/100% 100% no-repeat;
 	-webkit-transform-style: preserve-3d;
-	-webkit-transform: skewX(40deg) ;
+	transform-style: preserve-3d;
+	-webkit-transform: skewX(40deg);
+	transform: skewX(40deg);
 	-webkit-transition: all .1s;
+	transition: all .1s;
 }
 
 .contact_move {
 	-webkit-transform: skewX(40deg)  translate3d(140%, -240%, 0);
+	transform: skewX(40deg)  translate3d(140%, -240%, 0);
 }
 
 .contact_copy {
@@ -189,8 +226,11 @@ html, body {
 	height: 88%;
 	background: url(images/contact.png) 0px 0px/100% 100% no-repeat;
 	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
 	-webkit-transform: translate3d(0, 0, 0) rotate(0deg) scale(0.06, 0.06);
+	transform: translate3d(0, 0, 0) rotate(0deg) scale(0.06, 0.06);
 	-webkit-transition: -webkit-transform .5s, left .5s, top .5s, visibility, .45s;
+	transition: transform .5s, left .5s, top .5s, visibility, .45s;
 	z-index: 100;
 	visibility: hidden;
 }
@@ -200,6 +240,7 @@ html, body {
 	left: 50%;
 	top: 50%;	
 	-webkit-transform: translate3d(-50%, -50%, 0) rotate(-360deg) scale(1, 1);
+	transform: translate3d(-50%, -50%, 0) rotate(-360deg) scale(1, 1);
 }
 
 .contact_final {
@@ -210,6 +251,7 @@ html, body {
 	width: 88%;
 	height: 88%;
 	-webkit-transform: translate3d(-50%, -50%, 0);
+	transform: translate3d(-50%, -50%, 0);
 	background: url(images/contact.png) 0px 0px/100% 100% no-repeat;
 	z-index: 100;
 }
@@ -222,7 +264,9 @@ html, body {
 	width: 60px;
 	height: 60px;
 	-webkit-transition: -webkit-transform .4s;
+	transition: transform .4s;
 	-webkit-transform: scale(0,0) rotate(0deg);
+	transform: scale(0,0) rotate(0deg);
 	z-index: 200
 }
 
@@ -231,7 +275,8 @@ html, body {
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	-webkit-transform-origin: center center;	
+	-webkit-transform-origin: center center;
+	transform-origin: center center;	
 	width: 60px;
 	height: 8px;
 	background-color: #fff;
@@ -239,10 +284,12 @@ html, body {
 
 #rectangle_up {
 	-webkit-transform: translate3d(-50%, -50%, 0) rotate(45deg);
+	transform: translate3d(-50%, -50%, 0) rotate(45deg);
 }
 
 #rectangle_down {
 	-webkit-transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+	transform: translate3d(-50%, -50%, 0) rotate(-45deg);
 }
 
 .tip {
@@ -254,6 +301,7 @@ html, body {
 	background-color: rgb(0, 255, 255);
 	opacity: 0.5;
 	-webkit-animation: attention 1s linear infinite alternate;
+	animation: attention 1s linear infinite alternate;
 }
 
 #tip_about {
@@ -289,6 +337,7 @@ html, body {
 	height: 100%;
 	background: url(images/wall.png) 0px 0px/100% 100% no-repeat;
 	-webkit-transition: -webkit-transform .4s;	
+	transition: transform .4s;
 }
 
 #door {
@@ -299,9 +348,13 @@ html, body {
 	height: 69.4%;;
 	background: url(images/door.png) 0px 0px/100% 100% no-repeat;
 	-webkit-transition: -webkit-transform .4s;
+	transition: transform .4s;
 	-webkit-transform-origin: left center;
+	transform-origin: left center;
 	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
 	-webkit-transform: rotateY(0deg);
+	transform: rotateY(0deg);
 }
 
 #tip_enter {
@@ -318,14 +371,20 @@ html, body {
 	height: 10%;
 	background: url(images/touch.png) 0px 0px/100% 100% no-repeat;	
 	-webkit-animation: tip_hand 3s infinite;
-
+	animation: tip_hand 3s infinite;
 }
 
 /*动画*/
 @-webkit-keyframes typing {
 	0%{ -webkit-transform: translate3d(0, -4%, 0) rotate(27deg);}	
-	50% { -webkit-transform: translate3d(0, 0%, 0) rotate(27deg); }	
+	50% { -webkit-transform: translate3d(0, 0%, 0) rotate(27deg);}	
 	100% { -webkit-transform: translate3d(0, 4%, 0) rotate(27deg);}
+}
+
+@keyframes typing {
+	0%{ transform: translate3d(0, -4%, 0) rotate(27deg);}	
+	50% { transform: translate3d(0, 0%, 0) rotate(27deg);}	
+	100% { transform: translate3d(0, 4%, 0) rotate(27deg);}
 }
 
 @-webkit-keyframes shakefeet {
@@ -334,14 +393,32 @@ html, body {
 	100% { -webkit-transform: rotate(-36deg);}
 }
 
+@keyframes shakefeet {
+	0% {transform: rotate(-24deg);}	
+	50% {transform: rotate(-30deg);}	
+	100% {transform: rotate(-36deg);}
+}
+
 @-webkit-keyframes attention {
 	0% { -webkit-transform: scale(0.8, 0.8); opacity: .6;}
 	50% { -webkit-transform: scale(1, 1); opacity: .5;}
 	100% { -webkit-transform: scale(1.2, 1.2); opacity: .4;}
 }
 
+@keyframes attention {
+	0% { transform: scale(0.8, 0.8); opacity: .6;}
+	50% { transform: scale(1, 1); opacity: .5;}
+	100% { transform: scale(1.2, 1.2); opacity: .4;}
+}
+
 @-webkit-keyframes tip_hand {
 	0%, 60%{ -webkit-transform: scale(1,1);}
 	80%, 90%{ -webkit-transform: scale(0.8,0.8);}
 	100%{ -webkit-transform: scale(1,1);}
+}
+
+@keyframes tip_hand {
+	0%, 60%{ transform: scale(1,1);}
+	80%, 90%{ transform: scale(0.8,0.8);}
+	100%{ transform: scale(1,1);}
 }

@@ -21,6 +21,7 @@
 		top: 50%;
 		font-size: 30px;
 		-webkit-transform: translate3d(-50%, -60%, 0);
+		transform: translate3d(-50%, -60%, 0);
 		color: rgb(255,255,255);		
 	}
 	-->
@@ -67,7 +68,8 @@
 	
 	<script src="zepto.1.1.6.js"></script>
 	<script>
-	var $background = $("#background"),
+	var $main = $("#main"),
+		$background = $("#background"),
 		$rightHand = $("#right-hand"),
 		$rightHandCopy = $("#right-hand-copy"),
 		$aboutPost = $("#about"),
@@ -107,7 +109,7 @@
 		lazyImgs.lazyload({
 			load : function() {
 				counter++;				
-				persentage.text("Loading... " + Math.ceil(counter * 100 / total) + "%");
+				persentage.text("Loading... " + Math.floor(counter * 100 / total + 10) + "%");
 				if(counter == total) {
 					persentage.hide();
 					loadingmask.animate({
@@ -122,7 +124,9 @@
 		})
 	});
 
-	if (isPC()) { //pc端支持点击事件
+	if (isPC()) { 
+		$main.addClass("main");
+		//pc端支持点击事件
 		$("#tip_enter").on("click", function(event) {
 			showStage();
 		});
@@ -198,7 +202,8 @@
 	function magnifyStage() {
 
 		$("#stage").css({
-			"-webkit-transform" : "scale(1,1)"
+			"-webkit-transform" : "scale(1,1)",
+			"transform" : "scale(1,1)"
 		});
 	}
 
@@ -208,7 +213,8 @@
 			door = $("#door"),
 			wall = $("#wall");
 		door.css({
-			"-webkit-transform" : "rotateY(90deg)"
+			"-webkit-transform" : "rotateY(90deg)",
+			"transform" : "rotateY(90deg)"
 		});
 		$tip_enter.hide();
 		$("#tip_hand").hide();
@@ -219,7 +225,8 @@
 		}, 400);
 		setTimeout(function() {
 			wall.css({
-				"-webkit-transform" : "scale(2.8, 2.8)"
+				"-webkit-transform" : "scale(2.8, 2.8)",
+				"transform" : "scale(2.8, 2.8)"
 			})
 		}, 400);
 		
@@ -255,13 +262,15 @@
 
 	function showCloseButton() {
 		$closeButton.css({
-			"-webkit-transform" : "scale(1,1) rotate(180deg)"
+			"-webkit-transform" : "scale(1,1) rotate(180deg)",
+			"transform" : "scale(1,1) rotate(180deg)"
 		});
 	}
 
 	function hideCloseButton() {
 		$closeButton.css({
-			"-webkit-transform" : "scale(0,0) rotate(0deg)"
+			"-webkit-transform" : "scale(0,0) rotate(0deg)",
+			"transform" : "scale(0,0) rotate(0deg)"
 		});
 	}
 
@@ -281,7 +290,8 @@
 
 		$rightHandCopy.css({
 			"visibility" : "visible",
-			"-webkit-transform" : "translate3d(60%, -20%, 0) rotate(72deg)"
+			"-webkit-transform" : "translate3d(60%, -20%, 0) rotate(72deg)",
+			"transform" : "translate3d(60%, -20%, 0) rotate(72deg)"
 		});
 
 		setTimeout(function() {
@@ -289,30 +299,35 @@
 		}, 400);
 		
 		$person.css({
-			"-webkit-transform" : "skewX(-3deg)"
+			"-webkit-transform" : "skewX(-3deg)",
+			"transform" : "skewX(-3deg)"
 		});
 
 		setTimeout(function() {
 			$person.css({
-				"-webkit-transform" : "skewX(2deg)"
+				"-webkit-transform" : "skewX(2deg)",
+				"transform" : "skewX(2deg)"
 			});
 		}, 200);
 
 		setTimeout(function() {
 			$person.css({
-				"-webkit-transform" : "skewX(0deg)"
+				"-webkit-transform" : "skewX(0deg)",
+				"transform" : "skewX(0deg)"
 			});
 		}, 500);
 
 		timeout_contact = setTimeout(function() {
 			$contact.css({
-				"-webkit-transform" : "skewX(40deg)  translate3d(120%, -240%, 0)"
+				"-webkit-transform" : "skewX(40deg)  translate3d(120%, -240%, 0)",
+				"transform" : "skewX(40deg)  translate3d(120%, -240%, 0)"
 			});
 		}, 200);
 
 		timeout_hand = setTimeout(function(){
 			$rightHandCopy.css({
-				"-webkit-transform" : "translate3d(90%, -40%, 0) rotate(20deg)"
+				"-webkit-transform" : "translate3d(90%, -40%, 0) rotate(20deg)",
+				"transform" : "translate3d(90%, -40%, 0) rotate(20deg)"
 			});
 		}, 200);
 
@@ -327,7 +342,8 @@
 		 		"visibility" : "visible",
 				"left" : "50%",
 				"top" : "50%",	
-				"-webkit-transform" : "translate3d(-50%, -50%, 0) rotate(360deg) scale(1, 1)"
+				"-webkit-transform" : "translate3d(-50%, -50%, 0) rotate(360deg) scale(1, 1)",
+				"transform" : "translate3d(-50%, -50%, 0) rotate(360deg) scale(1, 1)"
  			});
  		}, 350);
 
@@ -350,7 +366,8 @@
 			"visibility" : "hidden",
 			"left" : "18%",
 			"top" : "18%",	
-			"-webkit-transform" : "translate3d(0, 0, 0) rotate(0deg) scale(0.06, 0.06)"
+			"-webkit-transform" : "translate3d(0, 0, 0) rotate(0deg) scale(0.06, 0.06)",
+			"transform" : "translate3d(0, 0, 0) rotate(0deg) scale(0.06, 0.06)"
 		});
 		
 		setTimeout(function() {
@@ -359,19 +376,22 @@
 
 		setTimeout(function() {
 			$person.css({
-				"-webkit-transform" : "skewX(2deg)"
+				"-webkit-transform" : "skewX(2deg)",
+				"transform" : "skewX(2deg)"
 			})
 		}, 150);
 
 		setTimeout(function() {
 			$person.css({
-				"-webkit-transform" : "skewX(-3deg)"
+				"-webkit-transform" : "skewX(-3deg)",
+				"transform" : "skewX(-3deg)"
 			})
 		}, 450);
 
 		setTimeout(function() {
 			$person.css({
-				"-webkit-transform" : "skewX(0deg)"
+				"-webkit-transform" : "skewX(0deg)",
+				"transform" : "skewX(0deg)"
 			})
 		}, 750);
 
@@ -383,20 +403,23 @@
 
 		setTimeout(function() {
 			$rightHandCopy.css({
-				"-webkit-transform" : "translate3d(60%, -20%, 0) rotate(72deg)"
+				"-webkit-transform" : "translate3d(60%, -20%, 0) rotate(72deg)",
+				"transform" : "translate3d(60%, -20%, 0) rotate(72deg)"
 			});
 		}, 450);
 
 		setTimeout(function() {
 			$contact.css({
-				"-webkit-transform" : "skewX(40deg)"
+				"-webkit-transform" : "skewX(40deg)",
+				"transform" : "skewX(40deg)"
 			});
 		}, 450);
 
 		setTimeout(function() {
 			$rightHandCopy.css({
 				"visibility" : "hidden",
-				"-webkit-transform" : "none"
+				"-webkit-transform" : "none",
+				"transform" : "none"
 			});
 		}, 650);
 
@@ -414,7 +437,8 @@
 		$closeButton.current = "aboutPost";
 
 		$aboutPost.css({
-			"-webkit-transform" : "translate3d(-36%, -52%, 0) rotate(-20deg) scale(0.22, 0.2)"
+			"-webkit-transform" : "translate3d(-36%, -52%, 0) rotate(-20deg) scale(0.22, 0.2)",
+			"transform" : "translate3d(-36%, -52%, 0) rotate(-20deg) scale(0.22, 0.2)"
 		});
 		
 		setTimeout(function() {
@@ -424,6 +448,7 @@
 		setTimeout(function() {
 			$aboutPost.css({
 				"-webkit-transform" : "translate3d(-50%, -42%, 0) rotate(0deg) scale(1,1)",
+				"transform" : "translate3d(-50%, -42%, 0) rotate(0deg) scale(1,1)",
 				"z-index" : "100"
 			});
 		}, 300);
@@ -443,7 +468,8 @@
 		});
 
 		$aboutPost.css({
-			"-webkit-transform" : "translate3d(-36%, -52%, 0) rotate(-20deg) scale(0.22, 0.2)"
+			"-webkit-transform" : "translate3d(-36%, -52%, 0) rotate(-20deg) scale(0.22, 0.2)",
+			"transform" : "translate3d(-36%, -52%, 0) rotate(-20deg) scale(0.22, 0.2)"
 		});
 
 		setTimeout(function() {
@@ -453,6 +479,7 @@
 		setTimeout(function() {
 			$aboutPost.css({
 				"-webkit-transform" : "translate3d(-30%, -43.6%, 0) scale(0.22, 0.2) rotate(0deg)",
+				"transform" : "translate3d(-30%, -43.6%, 0) scale(0.22, 0.2) rotate(0deg)",
 				"z-index" : "0"
 			});
 		}, 380);
@@ -472,11 +499,13 @@
 		}, 200);
 
 		$("#man").css({
-			"-webkit-transform" : "translate3d(-70%, -100%, 0)"
+			"-webkit-transform" : "translate3d(-70%, -100%, 0)",
+			"transform" : "translate3d(-70%, -100%, 0)"
 		});
 
 		$("#works").css({
-			"-webkit-transform" : "translate3d(32%, -230%, 0) scale(1.5, 1.5)"
+			"-webkit-transform" : "translate3d(32%, -230%, 0) scale(1.5, 1.5)",
+			"transform" : "translate3d(32%, -230%, 0) scale(1.5, 1.5)"
 		})
 
 		setTimeout(function() {
@@ -507,11 +536,13 @@
 		});
 
 		$("#works").css({
-			"-webkit-transform" : "translate3d(32%, -205%, 0) scale(0.98, 0.98)"
+			"-webkit-transform" : "translate3d(32%, -205%, 0) scale(0.98, 0.98)",
+			"transform" : "translate3d(32%, -205%, 0) scale(0.98, 0.98)"
 		});
 
 		$("#man").css({
-			"-webkit-transform" : "translate3d(3%, -100%, 0)"
+			"-webkit-transform" : "translate3d(3%, -100%, 0)",
+			"transform" : "translate3d(3%, -100%, 0)"
 		})
 
 		setTimeout(function() {
