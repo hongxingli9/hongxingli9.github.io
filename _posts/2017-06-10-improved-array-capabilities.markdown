@@ -90,7 +90,7 @@ console.log(numbers.toString());    // 1,2,1,1
 
 numbers.fill(0, 1, 3);
 
-console.log(numbers.toString());    // 1,0,0,4
+console.log(numbers.toString());    // 1,0,0,1
 ```
 > 起始位置或结束为止为负数时，index加上数组长度后得到最后的位置值。
 
@@ -183,7 +183,7 @@ console.log(view2.byteLength);	//2
 * getUint8(byteOffset, littleEndian) 在byteOffset处读区一个无符号int8值
 * setUint8(byteOffset, value, littleEndian) 在byteOffset处写入一个无符号int8值
 
-> little endian 小端子节序，指的是在存储数据的多个内存字节中，第一个内存字节存储着数据的最低字节数据，最后一个内存字节存储着数据的最高字节数据。
+> little endian 小端字节序，指的是在存储数据的多个内存字节中，第一个内存字节存储着数据的最低字节数据，最后一个内存字节存储着数据的最高字节数据。
 
 ```javascript
 let buffer = new ArrayBuffer(2),
